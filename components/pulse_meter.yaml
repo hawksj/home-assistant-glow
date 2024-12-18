@@ -83,7 +83,7 @@ sensor:
   - platform: total_daily_energy
     id: sensor_total_daily_energy_${tariff}
     name: '${friendly_name} - Daily Energy ${tariff}'
-    power_id: sensor_energy_pulse_meter__${tariff}
+    power_id: sensor_energy_pulse_meter_${tariff}
     unit_of_measurement: kWh
     icon: mdi:circle-slice-3
     state_class: total_increasing
