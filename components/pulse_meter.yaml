@@ -6,7 +6,7 @@ api:
     - service: reset_total_energy
       then:
         - button.press:
-            id: button_reset_total
+            id: button_reset_total_${tariff}
 
 number:
   # Set the pulse rate of the LED on your meter
@@ -36,18 +36,18 @@ number:
 button:
   # Reset the total energy entity
   - platform: template
-    id: button_reset_total
-    name: "Reset - Total Energy"
+    id: button_reset_total_${tariff}
+    name: 'Reset - Total Energy ${tariff}'
     on_press:
       - pulse_meter.set_total_pulses:
-          id: sensor_energy_pulse_meter
+          id: sensor_energy_pulse_meter_${tariff}
           value: !lambda "return id(select_reset_total).state * id(select_pulse_rate).state;"
 
 sensor:
   # Pulse meter
   - platform: pulse_meter
-    id: sensor_energy_pulse_meter
-    name: '${friendly_name} - Power Consumption'
+    id: sensor_energy_pulse_meter_${tariff}
+    name: '${friendly_name} - Power Consumption ${tariff}'
     unit_of_measurement: W
     state_class: measurement
     device_class: power
@@ -67,8 +67,8 @@ sensor:
       - lambda: return x * ((60.0 / id(select_pulse_rate).state) * 1000.0);
 
     total:
-      id: sensor_total_energy
-      name: '${friendly_name} - Total Energy'
+      id: sensor_total_energy_${tariff}
+      name: '${friendly_name} - Total Energy ${tariff}'
       unit_of_measurement: kWh
       icon: mdi:circle-slice-3
       state_class: total_increasing
@@ -81,9 +81,9 @@ sensor:
 
   # Total day usage
   - platform: total_daily_energy
-    id: sensor_total_daily_energy
-    name: '${friendly_name} - Daily Energy'
-    power_id: sensor_energy_pulse_meter
+    id: sensor_total_daily_energy_${tariff}
+    name: '${friendly_name} - Daily Energy ${tariff}'
+    power_id: sensor_energy_pulse_meter__${tariff}
     unit_of_measurement: kWh
     icon: mdi:circle-slice-3
     state_class: total_increasing
