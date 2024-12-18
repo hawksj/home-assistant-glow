@@ -41,7 +41,6 @@ packages:
     ref: "hawksj-test"
     files:
       - components/basis.yaml
-      - components/updates.yaml
       - components/status_led.yaml
       - components/pulse_meter.yaml
 
