@@ -43,6 +43,7 @@ packages:
       - components/basis.yaml
       - components/status_led.yaml
       - components/pulse_meter.yaml
+    refresh: 0d
 
 # Enable logging
 logger:
