@@ -10,7 +10,7 @@ substitutions:
   friendly_name: Home Assistant Glow
   project_version: "4.2.3"
   device_description: "Measure your energy consumption with the pulse LED on your smart meter - ESP32 Generic"
-  tariff: night
+  tariff: default
 
   # Define the GPIO pins
   pulse_pin: GPIO26
